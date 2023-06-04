@@ -1,0 +1,40 @@
+{
+  "name": "mintdapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@alch/alchemy-web3": "^1.4.7",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@fleekhq/fleek-storage-js": "^1.0.24",
+    "@mui/material": "^5.13.0",
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-waffle": "^2.0.2",
+    "@openzeppelin/contracts": "^4.5.0",
+    "bnc-onboard": "^1.38.2",
+    "chai": "^4.3.6",
+    "clipboard": "^2.0.11",
+    "dotenv": "^16.0.0",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.5.4",
+    "hardhat": "^2.8.4",
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.2.30",
+    "next": "12.1.4",
+    "react": "18.0.0",
+    "react-dom": "18.0.0"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-etherscan": "^3.0.3",
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.23"
+  }
+}

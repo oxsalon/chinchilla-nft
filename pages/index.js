@@ -12,7 +12,7 @@ import Apes from './Apes';
 export default function Home() {
 
   function onBackHome() {
-    window.location.href = 'https://chinchilla.city';
+    window.location.href = 'https://chinchilla.guru';
   }
 
   return (
@@ -49,7 +49,7 @@ export default function Home() {
               </li>
 
               <li className="cursor-pointer">
-                <a href="https://twitter.com/" target="_blank" rel="noreferrer">
+                <a href="https://twitter.com/chinchin_fi" target="_blank" rel="noreferrer">
                   <svg
                     className="w-6 h-6 md:w-8 md:h-8"
                     stroke="currentColor"
@@ -64,7 +64,7 @@ export default function Home() {
               </li>
 
               <li className="cursor-pointer">
-                <a href="https://discord.gg/" target="_blank" rel="noreferrer">
+                <a href="https://discord.com/invite/mpUBe7gXAy" target="_blank" rel="noreferrer">
                   <svg
                     className="w-6 h-6 md:w-8 md:h-8"
                     stroke="currentColor"

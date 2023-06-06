@@ -7,6 +7,7 @@ import {
   getListMinteState,
   getPrice,
   publicMint,
+  getMaxSupply,
   gettMintAmount,
   listMint
 } from '../utils/interact'
@@ -40,7 +41,7 @@ export default function Mint() {
       setMintState(await getMinteState())
       setListMintState(await getListMinteState())
       setPrice((await getPrice()))
-      // setMaxSupply(await getMaxSupply())
+      setMaxSupply(await getMaxSupply())
       // setTotalMinted(await getTotalMinted())
       // setPaused(await isPausedState())
       // setIsPublicSale(await isPublicSaleState())
@@ -111,7 +112,7 @@ export default function Mint() {
       if(!canMint) {
         setStatus({
           success: false,
-          message: 'can not to mint'
+          message: 'You can&prime;t mint anymore'
         })
         setIsMinting(false)
         return;
@@ -152,7 +153,7 @@ export default function Mint() {
     setShareLink(link)
     inviteJsonObj.push({
       addr: walletAddress,
-      time: new Date().toString()
+      time: new Date().toUTCString()
     })
 
     setInviteJsonObj([...inviteJsonObj])
@@ -190,7 +191,7 @@ export default function Mint() {
               X
             </div>
             <h1 className="font-coiny uppercase font-bold text-3xl md:text-4xl bg-gradient-to-br  from-brand-green to-brand-blue bg-clip-text text-transparent mt-3">
-              {paused ? 'Paused' : isPreSale ? 'Pre-Sale' : 'Public Sale'}
+              {paused ? 'Paused' : 'Whitelist Round'}
             </h1>
             <h3 className="text-sm text-pink-200 tracking-widest">
               {walletAddress
@@ -199,12 +200,12 @@ export default function Mint() {
             </h3>
             <div className="flex flex-col md:flex-row md:space-x-14 w-full mt-10 md:mt-14">
               <div className="relative w-full">
-                <div className="font-coiny z-10 absolute top-2 left-2 opacity-80 filter backdrop-blur-lg text-base px-4 py-2 bg-black border border-brand-purple rounded-md flex items-center justify-center text-white font-semibold">
+                {/* <div className="font-coiny z-10 absolute top-2 left-2 opacity-80 filter backdrop-blur-lg text-base px-4 py-2 bg-black border border-brand-purple rounded-md flex items-center justify-center text-white font-semibold">
                   <p>
                     <span className="text-brand-pink"> {totalMinted} </span> /
                     {maxSupply}
                   </p>
-                </div>
+                </div> */}
 
                 <img
                   src="/images/13.png"
@@ -328,8 +329,8 @@ export default function Mint() {
 
           <div className="mt-4 z-1 md:max-w-3xl w-full glass filter backdrop-blur-sm py-4 rounded-md px-2 md:px-10">
             <div className="flex text-white">
-              <div className="flex-1 text-center leading-8">邀请地址</div>
-              <div className="flex-1 text-center leading-8">时间</div>
+              <div className="flex-1 text-center leading-8">Invitation address</div>
+              <div className="flex-1 text-center leading-8">Invitation time</div>
             </div>
             {inviteJsonObj.map((e, i) => (
               <div className="flex text-white" key={i}>

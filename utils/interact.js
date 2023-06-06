@@ -75,8 +75,14 @@ export const getCanMinteAmount = async () => {
 }
 
 export const getMaxSupply = async () => {
-  const maxSupply = await nftContract.methods.maxSupply().call()
-  return maxSupply
+  const provider = new ethers.providers.Web3Provider(window.ethereum)
+  const contract = new ethers.Contract(
+    config.contractAddress,
+    contractAbi,
+    provider
+  )
+  const mintState = await contract.maxSupply()
+  return mintState
 }
 
 export const isPausedState = async () => {

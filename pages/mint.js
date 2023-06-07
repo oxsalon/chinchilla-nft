@@ -7,7 +7,6 @@ import {
   getListMinteState,
   getPrice,
   publicMint,
-  getMaxSupply,
   gettMintAmount,
   listMint
 } from '../utils/interact'
@@ -41,9 +40,9 @@ export default function Mint() {
       setMintState(await getMinteState())
       setListMintState(await getListMinteState())
       setPrice((await getPrice()))
-      setMaxSupply(await getMaxSupply())
+      // setMaxSupply(await getMaxSupply())
       // setTotalMinted(await getTotalMinted())
-      // setPaused(await isPausedState())
+      setPaused(true)
       // setIsPublicSale(await isPublicSaleState())
       // const isPreSale = await isPreSaleState()
     }
@@ -264,8 +263,9 @@ export default function Mint() {
                     <p> Total </p>
                     <div className="flex items-center space-x-3">
                       <p>
-                        {Number.parseFloat(price / wei).toFixed(2)}
-                        ETH
+                        {/* {Number.parseFloat(price / wei).toFixed(2)} */}
+                        
+                        0.0005ETH
                       </p>
                       <span className="text-gray-400"> +GAS </span>
                     </div>
@@ -306,12 +306,12 @@ export default function Mint() {
                 </p>
               </div>
             )}
-            <button
+            {/* <button
               className="mt-12 w-full bg-gradient-to-br from-blue-500 to-blue-600 shadow-sm px-6 py-3 rounded-md text-md text-white hover:shadow-pink-400/50 mx-4 tracking-wide uppercase"
               onClick={onCreateInviteLink}
             >
               Invite Friends
-            </button>
+            </button> */}
             <div className="border-t flex flex-col items-center mt-10 py-2 w-full">
               <h3 className="text-2xl text-blue-300 uppercase mt-6">
                 Contract Address
@@ -327,7 +327,7 @@ export default function Mint() {
             </div>
           </div>
 
-          <div className="mt-4 z-1 md:max-w-3xl w-full glass filter backdrop-blur-sm py-4 rounded-md px-2 md:px-10">
+          {/* <div className="mt-4 z-1 md:max-w-3xl w-full glass filter backdrop-blur-sm py-4 rounded-md px-2 md:px-10">
             <div className="flex text-white">
               <div className="flex-1 text-center leading-8">Invitation address</div>
               <div className="flex-1 text-center leading-8">Invitation time</div>
@@ -338,7 +338,7 @@ export default function Mint() {
                 <div className="flex-1 text-center leading-8">{e.time}</div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
       <Dialog

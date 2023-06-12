@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { initOnboard } from '../utils/onboard'
 import { config } from '../dapp.config'
+import { ethers } from 'ethers'
 import Clipboard from 'clipboard'
 import {
   getMinteState,
@@ -105,8 +106,14 @@ export default function Mint() {
 
   const publicMintHandler = async () => {
     setIsMinting(true)
-    console.log(price, 11)
-    if (price) {
+
+    if (ethers.utils.formatUnits(price) <= 0) {
+      setStatus({
+        success: false,
+        message: 'Illegal price'
+      })
+      setIsMinting(false)
+      return
     }
     if (mintState) {
       const canMint = await gettMintAmount()
@@ -270,7 +277,7 @@ export default function Mint() {
                   <div className="w-full text-xl font-coiny flex items-center justify-between text-brand-yellow">
                     <p> Total </p>
                     <div className="flex items-center space-x-3">
-                      <p>{0.0005 * mintAmount}ETH</p>
+                      <p>{ethers.utils.formatUnits(price) * mintAmount}ETH</p>
                       <span className="text-gray-400"> +GAS </span>
                     </div>
                   </div>

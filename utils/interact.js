@@ -140,7 +140,8 @@ export const listMint = async (mintAmount = 1) => {
       mintAmount,
       proof,
       {
-        gasLimit: '990000'
+        gasLimit: '990000',
+        value: mintAmount
       }
     )
     return {

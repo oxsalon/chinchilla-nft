@@ -39,10 +39,10 @@ export default function Mint() {
     const init = async () => {
       setMintState(await getMinteState())
       setListMintState(await getListMinteState())
-      setPrice((await getPrice()))
+      setPrice(await getPrice())
       // setMaxSupply(await getMaxSupply())
       // setTotalMinted(await getTotalMinted())
-      setPaused(true)
+      // setPaused(true)
       // setIsPublicSale(await isPublicSaleState())
       // const isPreSale = await isPreSaleState()
     }
@@ -105,16 +105,15 @@ export default function Mint() {
 
   const publicMintHandler = async () => {
     setIsMinting(true)
-
     if (mintState) {
-      const canMint = await gettMintAmount();
-      if(!canMint) {
+      const canMint = await gettMintAmount()
+      if (!canMint) {
         setStatus({
           success: false,
-          message: 'You can&prime;t mint anymore'
+          message: "You can't mint anymore"
         })
         setIsMinting(false)
-        return;
+        return
       }
       const { success, status } = await publicMint(price)
 
@@ -128,14 +127,14 @@ export default function Mint() {
     }
 
     if (listMintState) {
-    const { success, status } = await listMint(price)
+      const { success, status } = await listMint(mintAmount)
 
-    setStatus({
-      success,
-      message: status
-    })
+      setStatus({
+        success,
+        message: status
+      })
 
-    setIsMinting(false)
+      setIsMinting(false)
     }
   }
 
@@ -165,15 +164,18 @@ export default function Mint() {
   }
 
   function onCopy(e) {
-    navigator.clipboard.writeText(shareLink).then(() => {
-       /* clipboard successfully set */
-      alert('复制成功');
-      setOpenLinkDialog(false)
-     }, () => {
-       /* clipboard write failed */
-      const clipboard = new Clipboard(e.target, { text: () => shareLink })
-      alert('复制成功');
-     })
+    navigator.clipboard.writeText(shareLink).then(
+      () => {
+        /* clipboard successfully set */
+        alert('复制成功')
+        setOpenLinkDialog(false)
+      },
+      () => {
+        /* clipboard write failed */
+        const clipboard = new Clipboard(e.target, { text: () => shareLink })
+        alert('复制成功')
+      }
+    )
   }
 
   return (
@@ -186,7 +188,10 @@ export default function Mint() {
         />
         <div className="flex flex-col items-center justify-center h-full w-full px-2 md:px-10">
           <div className="relative z-1 md:max-w-3xl w-full glass filter backdrop-blur-sm py-4 rounded-md px-2 md:px-10 flex flex-col items-center">
-            <div onClick={() => router.back()} className='absolute right-4 top-4 text-white text-2xl cursor-pointer'>
+            <div
+              onClick={() => router.back()}
+              className="absolute right-4 top-4 text-white text-2xl cursor-pointer"
+            >
               X
             </div>
             <h1 className="font-coiny uppercase font-bold text-3xl md:text-4xl bg-gradient-to-br  from-brand-green to-brand-blue bg-clip-text text-transparent mt-3">
@@ -262,11 +267,7 @@ export default function Mint() {
                   <div className="w-full text-xl font-coiny flex items-center justify-between text-brand-yellow">
                     <p> Total </p>
                     <div className="flex items-center space-x-3">
-                      <p>
-                        {/* {Number.parseFloat(price / wei).toFixed(2)} */}
-                        
-                        0.0005ETH
-                      </p>
+                      <p>{0.0005 * mintAmount}ETH</p>
                       <span className="text-gray-400"> +GAS </span>
                     </div>
                   </div>

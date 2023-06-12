@@ -43,7 +43,10 @@ export const gettMintAmount = async () => {
     contractAbi,
     provider
   )
-  const mintState = await contract.canMintAmount(window.ethereum.selectedAddress, 1);
+  const mintState = await contract.canMintAmount(
+    window.ethereum.selectedAddress,
+    1
+  )
   return mintState
 }
 
@@ -100,7 +103,7 @@ export const isPreSaleState = async () => {
   return preSale
 }
 
-export const listMint = async (mintAmount) => {
+export const listMint = async (mintAmount = 1) => {
   if (!window.ethereum.selectedAddress) {
     return {
       success: false,
@@ -134,7 +137,7 @@ export const listMint = async (mintAmount) => {
   try {
     const txHash = await contract.mintToMultipleAL(
       window.ethereum.selectedAddress,
-      1,
+      mintAmount,
       proof,
       {
         gasLimit: '990000'
@@ -143,7 +146,10 @@ export const listMint = async (mintAmount) => {
     return {
       success: true,
       status: (
-        <a href={`https://goerli.arbiscan.io/tx/${txHash.hash}`} target="_blank">
+        <a
+          href={`https://goerli.arbiscan.io/tx/${txHash.hash}`}
+          target="_blank"
+        >
           <p>✅ Check out your transaction on:</p>
           <p>{`https://goerli.arbiscan.io/tx/${txHash.hash}`}</p>
         </a>
@@ -186,7 +192,10 @@ export const publicMint = async (amount) => {
     return {
       success: true,
       status: (
-        <a href={`https://goerli.arbiscan.io/tx/${txHash.hash}`} target="_blank">
+        <a
+          href={`https://goerli.arbiscan.io/tx/${txHash.hash}`}
+          target="_blank"
+        >
           <p>✅ Check out your transaction on:</p>
           <p>{`https://goerli.arbiscan.io/tx/${txHash.hash}`}</p>
         </a>

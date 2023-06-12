@@ -147,12 +147,9 @@ export const listMint = async (mintAmount = 1, price) => {
     return {
       success: true,
       status: (
-        <a
-          href={`https://goerli.arbiscan.io/tx/${txHash.hash}`}
-          target="_blank"
-        >
+        <a href={`https://arbiscan.io/tx/${txHash.hash}`} target="_blank">
           <p>✅ Check out your transaction on:</p>
-          <p>{`https://goerli.arbiscan.io/tx/${txHash.hash}`}</p>
+          <p>{`https://arbiscan.io/tx/${txHash.hash}`}</p>
         </a>
       )
     }
@@ -193,12 +190,9 @@ export const publicMint = async (amount, price) => {
     return {
       success: true,
       status: (
-        <a
-          href={`https://goerli.arbiscan.io/tx/${txHash.hash}`}
-          target="_blank"
-        >
+        <a href={`https://arbiscan.io/tx/${txHash.hash}`} target="_blank">
           <p>✅ Check out your transaction on:</p>
-          <p>{`https://goerli.arbiscan.io/tx/${txHash.hash}`}</p>
+          <p>{`https://arbiscan.io/tx/${txHash.hash}`}</p>
         </a>
       )
     }

@@ -105,7 +105,9 @@ export default function Mint() {
 
   const publicMintHandler = async () => {
     setIsMinting(true)
-    console.log(mintState, listMintState)
+    console.log(price, 11)
+    if (price) {
+    }
     if (mintState) {
       const canMint = await gettMintAmount()
       if (!canMint) {

@@ -103,7 +103,7 @@ export const isPreSaleState = async () => {
   return preSale
 }
 
-export const listMint = async (mintAmount = 1) => {
+export const listMint = async (mintAmount = 1, price) => {
   if (!window.ethereum.selectedAddress) {
     return {
       success: false,
@@ -141,7 +141,7 @@ export const listMint = async (mintAmount = 1) => {
       proof,
       {
         gasLimit: '990000',
-        value: mintAmount
+        value: mintAmount * price
       }
     )
     return {
@@ -164,7 +164,7 @@ export const listMint = async (mintAmount = 1) => {
   }
 }
 
-export const publicMint = async (amount) => {
+export const publicMint = async (amount, price) => {
   if (!window.ethereum.selectedAddress) {
     return {
       success: false,
@@ -187,7 +187,7 @@ export const publicMint = async (amount) => {
       1,
       {
         gasLimit: '990000',
-        value: amount
+        value: amount * price
       }
     )
     return {

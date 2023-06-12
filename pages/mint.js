@@ -105,6 +105,7 @@ export default function Mint() {
 
   const publicMintHandler = async () => {
     setIsMinting(true)
+    console.log(mintState, listMintState)
     if (mintState) {
       const canMint = await gettMintAmount()
       if (!canMint) {
@@ -115,7 +116,7 @@ export default function Mint() {
         setIsMinting(false)
         return
       }
-      const { success, status } = await publicMint(mintAmount)
+      const { success, status } = await publicMint(mintAmount, price)
 
       setStatus({
         success,
@@ -127,7 +128,7 @@ export default function Mint() {
     }
 
     if (listMintState) {
-      const { success, status } = await listMint(mintAmount)
+      const { success, status } = await listMint(mintAmount, price)
 
       setStatus({
         success,

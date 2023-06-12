@@ -184,7 +184,7 @@ export const publicMint = async (amount, price) => {
   try {
     const txHash = await contract.mintToMultiple(
       window.ethereum.selectedAddress,
-      1,
+      amount,
       {
         gasLimit: '990000',
         value: amount * price

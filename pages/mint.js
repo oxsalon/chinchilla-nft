@@ -115,7 +115,7 @@ export default function Mint() {
         setIsMinting(false)
         return
       }
-      const { success, status } = await publicMint(price)
+      const { success, status } = await publicMint(mintAmount)
 
       setStatus({
         success,

@@ -22,7 +22,7 @@ export default function Mint() {
   const [price, setPrice] = useState(0)
   const [mintState, setMintState] = useState(true)
   const [listMintState, setListMintState] = useState(true)
-  const [paused, setPaused] = useState(false)
+  const [paused, setPaused] = useState(true)
   const [isPreSale, setIsPreSale] = useState(false)
 
   const [status, setStatus] = useState(null)
@@ -43,7 +43,7 @@ export default function Mint() {
       setPrice(await getPrice())
       // setMaxSupply(await getMaxSupply())
       // setTotalMinted(await getTotalMinted())
-      setPaused(true)
+      // setPaused(true)
       // setIsPublicSale(await isPublicSaleState())
       // const isPreSale = await isPreSaleState()
     }

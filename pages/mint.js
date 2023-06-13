@@ -43,7 +43,7 @@ export default function Mint() {
       setPrice(await getPrice())
       // setMaxSupply(await getMaxSupply())
       // setTotalMinted(await getTotalMinted())
-      // setPaused(true)
+      setPaused(true)
       // setIsPublicSale(await isPublicSaleState())
       // const isPreSale = await isPreSaleState()
     }
